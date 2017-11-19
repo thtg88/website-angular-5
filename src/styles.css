@@ -1,0 +1,28 @@
+.text-vertical-center h1,
+.text-vertical-center h3,
+.text-vertical-center p {
+  color: #000000;
+}
+p.lead a {
+  color:inherit;
+  text-decoration: underline;
+}
+footer {
+  padding: 50px 0;
+}
+ul.sidebar-nav>li.dropdown>ul.dropdown-menu{
+  background: #222;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  width: 100%;
+}
+ul.sidebar-nav>li.dropdown>ul.dropdown-menu>li{
+  height: 30px;
+  text-indent: 10px;
+}
+@media (min-width:1201px) {
+  .loaded {
+    opacity: 1 !important;
+  }
+}
