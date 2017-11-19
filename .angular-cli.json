@@ -9,6 +9,8 @@
       "outDir": "dist",
       "assets": [
         "assets",
+        "_ssr.json",
+        "_headers",
         "favicon.ico"
       ],
       "index": "index.html",
@@ -19,9 +21,18 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
+        "assets/css/bootstrap.min.css",
+        "assets/css/font-awesome.css",
+        "assets/css/theme.css",
         "styles.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "assets/js/jquery.js",
+        "assets/js/bootstrap.min.js",
+        "assets/js/theme.js",
+        "assets/js/google-font-loader.js",
+        "assets/js/google-analytics.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

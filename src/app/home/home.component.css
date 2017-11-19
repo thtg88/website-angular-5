@@ -1,0 +1,62 @@
+.header {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: scroll;
+}
+@media (min-width:1201px) {
+  .header {
+    background-image: url(../../assets/img/bg-2-full.jpg?v=0.1);
+    opacity: 0;
+    animation: opacity;
+    animation-duration: 3s;
+    animation-fill-mode: backwards;
+    transition: opacity 3s ease-in-out;
+  }
+}
+@media (max-width:500px) {
+  .header {
+    background-image: url(../../assets/img/bg-2-600w.jpg?v=0.1);
+  }
+}
+@media (max-width:800px) and (min-width:501px){
+  .header {
+    background-image: url(../../assets/img/bg-2-900w.jpg?v=0.1);
+  }
+}
+@media (max-width:1200px) and (min-width:801px){
+  .header {
+    background-image: url(../../assets/img/bg-2-1200w.jpg?v=0.1);
+  }
+}
+@media all and (orientation:portrait) and (max-width:500px) {
+  .header {
+    background-image: url(../../assets/img/bg-portrait-2.jpg?v=0.1);
+  }
+}
+#profile-icon-container {
+  width: 200px;
+  height: 175px;
+  margin:auto;
+}
+#profile-icon {
+  display: inline-block;
+}
+div.g-recaptcha-container{
+  margin:0 auto;
+  display: inline-block;
+}
+@media (min-width:1200px) {
+  div.g-recaptcha-container{
+    margin-bottom: 20px;
+  }
+}
+#contact-button-list li {
+  padding: 5px;
+}
+#message_sent-alert-success p {
+  color: #000000;
+}
+span.contact_request-feedback {
+  top: 25px !important;
+  right: 10px;
+}

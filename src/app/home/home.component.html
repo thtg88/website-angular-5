@@ -1,0 +1,183 @@
+<!-- Navigation -->
+<!-- <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><span class="fa fa-bars"></span></a>
+<nav id="sidebar-wrapper">
+  <ul class="sidebar-nav">
+    <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><span class="fa fa-remove"></span></a>
+    <li class="sidebar-brand"><a href="#top" class="menu-link">Marco Marassi</a></li>
+    <li><a href="/#top" class="menu-link">Home</a></li>
+    <li><a href="/#about" class="menu-link" i18n="@@appAboutMe">About Me</a></li>
+    <li><a href="/#contact" class="menu-link" i18n="@@appContacts">Contacts</a></li>
+  </ul>
+</nav> -->
+<!-- Content -->
+<!-- Header -->
+<header id="top" class="header" i18n-title="@@welcomeBackgroundPicture2" title="Picture taken at: Cala Blanca, Ciutadella de Menorca, Spain." [class.loaded]="windowService.getWindowLoaded()">
+  <div class="text-vertical-center">
+    <h1 i18n="@@welcomeHello">Hi, I'm Marco Marassi.</h1>
+    <h3 i18n="@@welcomeWebDeveloperSleeper">Web Developer by day, Sleeper by night.</h3>
+    <p i18n="@@welcomeSuperhero">What did you think I was? A superhero or something?</p>
+    <div id="profile-icon-container">
+      <img id="profile-icon" src="assets/img/icon.png" alt="Icon Logo" i18n-title="@@welcomeIconFace" title="This looks like my face." class="img-responsive img-circle">
+    </div>
+    <a href="#about" class="btn btn-dark btn-lg" i18n="@@welcomeMore">But wait, there's more!</a>
+  </div>
+</header>
+<!-- About -->
+<section id="about" class="about">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2 i18n="@@appAboutMe">About Me</h2>
+        <p class="lead" i18n="@@welcomePhpDeveloperSomersetDesign">I am currently a PHP Developer at <a href="https://somersetdesign.co.uk/" target="_blank" rel="noopener">Somerset Design</a>.</p>
+        <p class="lead" i18n="@@welcomeTechnicalSpecialistMondago">Previously, I worked as a Technical Specialist for <a href="https://mondago.com/" target="_blank" rel="noopener">Mondago Ltd</a>, where I covered two roles: Web Developer and Product Specialist.</p>
+        <p class="lead" i18n="@@welcomeWebDeveloperMondago">As a Web Developer (using technologies like AJAX, jQuery, Laravel, PHP, and SQL), I took care of all the public websites, the company's Business System, and most of the internal online systems.</p>
+        <p class="lead">
+          <ng-container i18n="@@welcomeProductSpecialistMondago">I also dedicated part of my time at the company to the Product Specialist role, where I covered the Italian market, providing sales and technical support.</ng-container>
+          <ng-container i18n="@@welcomeAttendConferencesMondago">The role granted me the opportunity to attend <a href="#wheres-waldo" data-toggle="modal" data-target="#wheres-waldo">conferences</a> and events in different countries.</ng-container>
+        </p>
+        <p class="lead" i18n="@@welcomeOutOfOffice">Outside of the office, you are most likely to find me at a cafè trying to speak a new foreign language, or chasing <a href="#classic-cars" data-toggle="modal" data-target="#classic-cars">classic cars</a> in the streets of town.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Footer -->
+<footer id="contact" class="bg-primary">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2 i18n="@@appContacts">Contacts</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <hr class="small">
+        <ul id="contact-button-list" class="list-inline">
+          <li>
+            <a href="https://www.google.co.uk/maps/place/Bristol/@51.4526832,-2.6233332,13z" target="_blank" rel="noopener" i18n-title="@@welcomeMapBristol" title="Italian born and bred, at the moment Bristol, UK based." class="btn btn-dark"><span class="fa fa-map-marker fa-fw fa-3x"></span></a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/marco-marassi/" target="_blank" rel="noopener" i18n-title="@@welcomeLinkedin" title="I'm on LinkedIn." class="btn btn-dark"><span class="fa fa-linkedin fa-fw fa-3x"></span></a>
+          </li>
+          <li>
+            <a href="https://bitbucket.org/thtg88/" target="_blank" rel="noopener" i18n-title="@@welcomeBitbucket" title="I'm not on GitHub, but I'm on Bitbucket." class="btn btn-dark"><span class="fa fa-bitbucket fa-fw fa-3x"></span></a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/thtg88/" target="_blank" rel="noopener" i18n-title="@@welcomeInstagram" title="Sometimes, I'm on Instagram." class="btn btn-dark"><span class="fa fa-instagram fa-fw fa-3x"></span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <hr class="small">
+        <p i18n="@@welcomeContactFormDisclaimer">By completing the form below, you agree the use of your details for future communications with yourself in regards to the message. Details are not stored in any database.</p>
+        <form [formGroup]="createContactRequestForm" (ngSubmit)="storeContactRequest()" novalidate>
+          <input type="hidden" id="locale" name="locale" value="{{locale}}">
+          <div id="contact_request-alert-container" class="form-group">
+            <div class="col-lg-12">
+              <div *ngIf="(createContactRequestForm.invalid && (createContactRequestForm.dirty || createContactRequestForm.touched)) || dataInvalid" class="alert alert-danger contact_request-alert">
+                <p *ngFor="let error of formErrors">{{error}}</p>
+                <p *ngIf="name.hasError('required')">Name is required.</p>
+                <p *ngIf="email.hasError('required')">Email is required.</p>
+                <p *ngIf="email.hasError('email')">Email is invalid.</p>
+                <p *ngIf="phone.hasError('required')">Phone is required.</p>
+                <p *ngIf="message.hasError('required')">Message is required.</p>
+                <!-- <p *ngIf="g_recaptcha_response.hasError('required')">Recaptcha is required.</p> -->
+              </div>
+              <div *ngIf="contactRequestCreateSuccess" class="alert alert-success contact_request-alert">
+                <p i18n="@@welcomeMessageSent">Message sent <span class="fa fa-fw fa-lg fa-check"></span></p>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-6">
+              <div class="form-group has-feedback" [class.has-error]="name.hasError('required') && (createContactRequestForm.dirty || createContactRequestForm.touched)">
+                <input type="text" id="name" formControlName="name" class="form-control contact_request-form-control" i18n-aria-label="@@welcomeYourName" aria-label="Your Name *" maxlength="255" i18n-placeholder="@@welcomeYourName" placeholder="Your Name *">
+                <span id="name-feedback" *ngIf="name.hasError('required') && (createContactRequestForm.dirty || createContactRequestForm.touched)" class="fa fa-fw fa-lg fa-remove form-control-feedback contact_request-feedback" aria-hidden="true"></span>
+                <span id="name-status" *ngIf="name.hasError('required') && (createContactRequestForm.dirty || createContactRequestForm.touched)" class="sr-only contact_request-status contact_request-status-hide">(<ng-container i18n="@@welcomeFormControlErrorStatus">error</ng-container>)</span>
+              </div>
+              <div class="form-group has-feedback" [class.has-error]="(email.hasError('required') || email.hasError('email')) && (createContactRequestForm.dirty || createContactRequestForm.touched)">
+                <input type="email" id="email" formControlName="email" class="form-control contact_request-form-control" i18n-aria-label="@@welcomeYourEmail" aria-label="Your Email *" maxlength="255" i18n-placeholder="@@welcomeYourEmail" placeholder="Your Email *">
+                <span id="email-feedback" *ngIf="(email.hasError('required') || email.hasError('email')) && (createContactRequestForm.dirty || createContactRequestForm.touched)" class="fa fa-fw fa-lg fa-remove form-control-feedback contact_request-feedback" aria-hidden="true"></span>
+                <span id="email-status" *ngIf="(email.hasError('required') || email.hasError('email')) && (createContactRequestForm.dirty || createContactRequestForm.touched)" class="sr-only contact_request-status contact_request-status-hide">(<ng-container i18n="@@welcomeFormControlErrorStatus">error</ng-container>)</span>
+              </div>
+              <div class="form-group has-feedback" [class.has-error]="phone.hasError('required') && (createContactRequestForm.dirty || createContactRequestForm.touched)">
+                <input type="tel" id="phone" formControlName="phone" class="form-control contact_request-form-control" i18n-aria-label="@@welcomeYourPhone" aria-label="Your Phone *" maxlength="255" i18n-placeholder="@@welcomeYourPhone" placeholder="Your Phone *">
+                <span id="phone-feedback" *ngIf="phone.hasError('required') && (createContactRequestForm.dirty || createContactRequestForm.touched)" class="fa fa-fw fa-lg fa-remove form-control-feedback contact_request-feedback" aria-hidden="true"></span>
+                <span id="phone-status" *ngIf="phone.hasError('required') && (createContactRequestForm.dirty || createContactRequestForm.touched)" class="sr-only contact_request-status contact_request-status-hide" i18n="@@welcomeFormControlErrorStatus">error</span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group has-feedback" [class.has-error]="message.hasError('required') && (createContactRequestForm.dirty || createContactRequestForm.touched)">
+                <textarea id="message" formControlName="message" class="form-control contact_request-form-control" i18n-aria-label="@@welcomeYourMessage" aria-label="Your Message *" maxlength="4000" i18n-placeholder="@@welcomeYourMessage" placeholder="Your Message *"></textarea>
+                <span id="message-feedback" *ngIf="message.hasError('required') && (createContactRequestForm.dirty || createContactRequestForm.touched)" class="fa fa-fw fa-lg fa-remove form-control-feedback contact_request-feedback" aria-hidden="true"></span>
+                <span id="message-status" *ngIf="message.hasError('required') && (createContactRequestForm.dirty || createContactRequestForm.touched)" class="sr-only contact_request-status contact_request-status-hide">(<ng-container i18n="@@welcomeFormControlErrorStatus">error</ng-container>)</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-lg-12 has-feedback">
+              <div class="g-recaptcha-container">
+                <re-captcha (resolved)="reCaptchaResolved($event)" siteKey="{{site_key}}"></re-captcha>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-lg-12 text-center">
+              <button id="form-submit-button" type="submit" *ngIf="!formSubmitting" [disabled]="createContactRequestForm.invalid" class="btn btn-dark" i18n="@@welcomeSendMessage">Send Message</button>
+              <button id="form-submit-button" type="button" *ngIf="formSubmitting" [disabled]="formSubmitting" class="btn btn-dark" i18n="@@welcomeSendMessage">Send Message</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <hr class="small">
+        <p>Copyright &copy; Marco Marassi</p>
+      </div>
+    </div>
+  </div>
+  <a id="to-top" href="#top" class="btn btn-dark btn-lg" aria-label="Go to the top of the page."><span class="fa fa-chevron-up fa-fw fa-1x"></span></a>
+</footer>
+<!--Modals-->
+<div id="classic-cars" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="classic-cars-label">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 id="classic-cars-label" class="modal-title" i18n="@@welcomeChasingClassicCars">Chasing Classic Cars</h4>
+      </div>
+      <div class="modal-body">
+        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="7" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+          <div style="padding:8px;">
+            <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50.0% 0; text-align:center; width:100%;">
+              <div style="background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div>
+            </div>
+            <p style=" margin:8px 0 0 0; padding:0 4px;">
+              <a href="https://www.instagram.com/p/4bs5E3zh-c/" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank" rel="noopener">Nice day to drive some Jags</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">Una foto pubblicata da Marco Marassi (@thtg88) in data: <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2015-06-27T12:36:51+00:00">27 Giu 2015 alle ore 05:36 PDT</time>
+            </p>
+          </div>
+        </blockquote>
+        <script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="wheres-waldo" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="wheres-waldo-label">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 id="wheres-waldo-label" class="modal-title" i18n="@@welcomeWheresWaldo">Where's Waldo?</h4>
+      </div>
+      <div class="modal-body">
+        <img src="assets/img/wheres-waldo-750w.jpg" alt="Where's Waldo?" i18n-title="@@welcomeCommsplusDistribution" title="CommsPlus Distribution 2014 Autumn Panasonic Dealer Conference, Broadbeach, Australia." class="img-responsive">
+        <p class="help-block">
+          <a href="https://www.google.co.uk/maps/place/Sofitel+Gold+Coast+Broadbeach/@-28.0297826,153.4302588,18z" target="_blank" rel="noopener"><span class="fa fa-map-marker fa-fw"></span></a>
+          <a href="https://www.commsplus-distribution.com.au/" target="_blank" rel="noopener" i18n="@@welcomeCommsplusDistribution">CommsPlus Distribution</a> <ng-container i18n="@@welcome2014PanasonicConference">2014 Autumn Panasonic Dealer Conference, Broadbeach, Australia.</ng-container>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

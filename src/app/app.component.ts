@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
+import { WindowService } from './window.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'Personal Website';
+
+  @HostListener('window:load') onLoad() {
+    if(this.windowService.getWindowLoaded() === false) {
+      this.windowService.setWindowLoaded(true);
+    }
+  }
+
+  @HostListener('window:unload') onUnload() {
+    this.windowService.setWindowLoaded(false);
+  }
+
+  constructor(private windowService: WindowService) {}
 }
