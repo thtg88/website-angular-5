@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
   site_key = google_recaptcha.site_key;
   g_recaptcha_response = '';
 
-  constructor((
+  constructor(
     private contactRequestService: ContactRequestService,
     public windowService: WindowService,
     private fb: FormBuilder

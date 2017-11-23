@@ -1,3 +1,25 @@
+.loading-container.loading-inactive {
+    display: none;
+}
+.loading-container.loading-inactive .loader {
+    display: none;
+}
+@keyframes typing {
+  0% {
+    background-color: #fff;
+    box-shadow: 12px 0 0 0 rgba(255,255,255,.2),24px 0 0 0 rgba(255,255,255,.2)
+  }
+
+  25% {
+    background-color: rgba(255,255,255,.4);
+    box-shadow: 12px 0 0 0 #fff,24px 0 0 0 rgba(255,255,255,.2)
+  }
+
+  75% {
+    background-color: rgba(255,255,255,.4);
+    box-shadow: 12px 0 0 0 rgba(255,255,255,.2),24px 0 0 0 #fff
+  }
+}
 .header {
   background-repeat: no-repeat;
   background-position: center center;
